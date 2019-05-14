@@ -1,0 +1,63 @@
+<div>
+  <div *ngIf="loader">
+    <app-archive-loader></app-archive-loader>
+  </div>
+  <div *ngIf="news && !loader">
+    <h1 class="post-title"> {{news.title}}</h1>
+    <h6 class="post-date-or-author">
+      <time><img class="date-and-user-icon" src="assets/images/icons/calendar-icon.png" alt=""> {{news.createDate |
+        date:'longDate' | uppercase}}</time>
+      <span class="pl-3 "><img class="date-and-user-icon" src="assets/images/icons/person.png" alt=""> {{news.author}}
+      </span>
+    </h6>
+    <div *ngIf="!ytVideo"><img class="w-100" src="{{news.featuredImage.small ? news.featuredImage.small : defaultImg}}"
+        alt=""></div>
+    <div class="post-content" [innerHTML]="news.content"></div>
+    <iframe class="ytVideo" *ngIf="ytVideo" [src]="youTubeUrl" frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <div *ngIf="errorMsg && !loader" class="col-12 align-items-center col-12 flex justify-content-center error-msg-box">
+    {{errorMsg}}
+  </div>
+  <div class=" padding-zero mt-3">
+    <h3 class="related-post">Related Posts</h3>
+    <div class="container-fluid">
+      <div class="row" *ngIf="relatedPostList && relatedPostList.length>0">
+        <article class="col-lg-4 col-md-4 padding-lr-5" *ngFor="let relatedNews of relatedPostList">
+          <div class=" ">
+            <a class="thum-link thumb" [routerLink]="['' ,relatedNews.slug]"
+              [ngStyle]="{'background-image' : 'url(' + relatedNews.featuredImage.small + ')'}"></a>
+            <div class="relatedNews-title-container">
+              <div class="relatedNews-title-inner-container">
+                <h6 class="relatedNews-title">
+                  <a class="relatedNews-title-link" [routerLink]="['' ,relatedNews.slug]">{{relatedNews.title}}</a>
+                </h6>
+                <time class="relatedNews-date-or-author">
+                  <img class="date-and-user-icon" src="assets/images/icons/calendar-icon.png" alt="" srcset="">
+                  {{relatedNews.createDate | date:'longDate' | uppercase}}
+                </time>
+                <p class="relatedNews-date-or-author"><img class="date-and-user-icon"
+                    src="assets/images/icons/person.png" alt="" srcset=""> {{relatedNews.author}} </p>
+                <p class="relatedNews-content">{{relatedNews.content}}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="row" *ngIf="loader">
+        <div class="col-lg-4 col-md-4">
+          <app-archive-loader></app-archive-loader>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <app-archive-loader></app-archive-loader>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <app-archive-loader></app-archive-loader>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

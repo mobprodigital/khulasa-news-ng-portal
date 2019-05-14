@@ -1,0 +1,32 @@
+<h4 class="news-title color-tiger-orange under-line">Market</h4>
+<section>
+  <div class="mb-3">
+    <h4 class="right-sidebar-title">Top Gainers</h4>
+    <button type="button" [ngClass]="{'btn-active':topGainer=='nifty'}" class="btn btn-active" (click)="topGainer='nifty'">nifty</button>
+    <button type="button" [ngClass]="{'btn-active':topGainer=='sensex'}" class="btn ml-2" (click)="topGainer='sensex'">sensex</button>
+  </div>
+  <div class="mb-3" [ngSwitch]="topGainer">
+    <div *ngSwitchCase="'nifty'">
+      <app-stock-market [tableHead]="gainer" [tableData]="topGainerNifty"></app-stock-market>
+    </div>
+    <div *ngSwitchCase="'sensex'">
+      <app-stock-market [tableHead]="gainer" [tableData]="topGainerSensex"></app-stock-market>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="mb-3">
+    <h4 class="right-sidebar-title">Top losers</h4>
+    <button type="button" [ngClass]="{'btn-active':topLoser=='nifty'}" class="btn" (click)="topLoser='nifty'">nifty</button>
+    <button type="button" [ngClass]="{'btn-active':topLoser=='sensex'}" class="btn ml-2" (click)="topLoser='sensex'">sensex</button>
+  </div>
+  <div class="mb-3" [ngSwitch]="topLoser">
+    <div *ngSwitchCase="'nifty'">
+      <app-stock-market [tableHead]="loser" [tableData]="topLoserNifty"></app-stock-market>
+    </div>
+    <div *ngSwitchCase="'sensex'">
+      <app-stock-market [tableHead]="loser" [tableData]="topLoserSensex"></app-stock-market>
+    </div>
+  </div>
+</section>
+<app-letest-news-template cssClass="color-orange" [categoryId]="54" categoryTitle="EnterTainment" [count]="6"></app-letest-news-template>

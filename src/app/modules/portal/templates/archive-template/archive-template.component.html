@@ -1,0 +1,43 @@
+<div>
+  <div *ngIf="loader; else finished">
+    <div class="row">
+      <div class="col-lg-6 col-md-6" *ngFor="let i of Arr">
+        <app-archive-loader></app-archive-loader>
+      </div>
+    </div>
+  </div>
+  <ng-template #finished>
+    <div>
+      <div *ngIf="categoryName">
+        <div class="padding-zero">
+          <h4 class="news-title under-line color-tiger-orange">{{categoryName}}</h4>
+        </div>
+      </div>
+      <div class="row" *ngIf="news && news.length > 0; else noData">
+        <article class="col-lg-6 col-md-6  margin-bottom-25" *ngFor="let nws of news">
+
+          <a class="thum-link thumb" [ngStyle]="{'background-image': 'url(' + nws.featuredImage.small +')'}"
+            [routerLink]="['' ,nws.slug]">
+          </a>
+          <h5 class="news-archive-title"> <a class="news-archive-link" [routerLink]="['' ,nws.slug]">{{nws.title}}</a></h5>
+          <time class="news-archive-date-or-author"><img class="date-and-user-icon" src="assets/images/icons/calendar-icon.png"
+              alt="" srcset=""> {{nws.createDate | date:'longDate' | uppercase}}</time>
+          <span class="news-archive-date-or-author pl-3"><img class="date-and-user-icon" src="assets/images/icons/person.png"
+              alt="" srcset=""> {{nws.author}} </span>
+          <p class="news-archive-content">{{nws.content}}</p>
+          <div class="pt-4">
+            <a class="btn-view-story" [routerLink]="['' ,nws.slug]">View Story</a>
+          </div>
+        </article>
+        <div class="pt-4 ">
+          <button class="more-news" (click)="moreNews()" type="button">load more</button>
+        </div>
+      </div>
+      <ng-template #noData>
+        <div class="error-msg-box text-center">
+          No data found
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+</div>

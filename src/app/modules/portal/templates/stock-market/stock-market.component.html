@@ -1,0 +1,12 @@
+<table class="customers">
+  <thead>
+    <tr *ngFor="let i of tableHead">
+      <th *ngFor="let j of i">{{j}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of tableData">
+      <td *ngFor="let j of i">{{j}} </td>
+    </tr>
+  </tbody>
+</table>

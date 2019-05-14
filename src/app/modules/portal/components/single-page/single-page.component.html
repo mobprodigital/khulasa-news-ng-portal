@@ -1,0 +1,12 @@
+<div>
+  <div *ngIf="loader">
+    <app-archive-loader></app-archive-loader>
+  </div>
+  <div *ngIf="news && !loader">
+    <h1 class="page-title"> {{news.title}}</h1>
+    <div class="page-content" [innerHTML]="news.content"></div>
+  </div>
+  <div *ngIf="errorMsg && !loader" class=" align-items-center col-12 flex justify-content-center error-msg-box">
+    {{errorMsg || json}}
+  </div>
+</div>

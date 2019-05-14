@@ -1,0 +1,36 @@
+
+ <h4 *ngIf="title" class="news-title p-0 under-line"><a class="{{cssClass}}" [routerLink]="['/category', categoryId]">{{title}}</a></h4>
+ <div *ngIf="loader">
+   <div class="row">
+     <div class="col-lg-6 col-md-6 col-xl-4" *ngFor="let i of Arr">
+       <app-archive-loader></app-archive-loader>
+     </div>
+   </div>
+ </div>
+
+<div class="container-fluid">
+  <div class="row" *ngIf="newsList && newsList.length > 0  && !loader">
+    <article class="col-lg-6 col-md-6 col-xl-4 padding-lr-5" *ngFor="let nws of newsList">
+      <div class=" ">
+        <a class="thum-link thumb" [routerLink]="['' ,nws.slug]" [ngStyle]="{'background-image' : 'url(' + nws.featuredImage.small + ')'}"></a>
+        <div class="home-title-container">
+          <div class="home-title-inner-container">
+            <h6 class="home-title">
+              <a class="home-title-link" [routerLink]="['' ,nws.slug]">{{nws.title}}</a>
+            </h6>
+            <time class="home-date-or-author">
+              <img class="date-and-user-icon" src="assets/images/icons/calendar-icon.png" alt="" srcset="">
+              {{nws.createDate | date:'longDate' | uppercase}}
+            </time>
+            <p class="home-date-or-author"><img class="date-and-user-icon" src="assets/images/icons/person.png" alt=""
+                srcset=""> {{nws.author}} </p>
+            <p class="home-content">{{nws.content}}</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="error-msg-box" *ngIf="errorMsg && !loader">
+    {{errorMsg}}
+  </div>
+</div>

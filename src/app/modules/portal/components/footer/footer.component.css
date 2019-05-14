@@ -1,0 +1,87 @@
+.border-solid-right {
+  border-right: solid 1px #fff;
+}
+
+.footer-hr {
+  background-color: #fff;
+  margin: 10px 0px;
+}
+
+.bg-footer {
+  background: #3d3d3d;
+  color: #ababab;
+}
+
+.footer-link {
+  border-left: solid 1px #fff;
+  padding: 0px 15px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.copy-right {
+  font-size: 14px;
+  margin: 0px 0px 10px 0px;
+  font-weight: lighter;
+}
+
+.social-media-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0px 15px;
+}
+
+.playstore-img-container {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 576px) {
+
+  .footer-link {
+    padding: 2px 5px;
+    font-size: 8px;
+  }
+
+  .copy-right {
+    font-size: 8px;
+  }
+
+  .social-media-icon {
+    width: 15px;
+    height: 15px;
+    margin: 0px 10px;
+  }
+
+  .playstore-img-container {
+    top: 32px;
+    right: 0px;
+  }
+
+  .playstore-img-container span {
+    font-size: 8px;
+  }
+
+  .img-playstore {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .playstore-img-container {
+    top: 45px;
+    right: 0px;
+  }
+
+  .playstore-img-container span {
+    font-size: 14px;
+  }
+
+  .img-playstore {
+    width: 65%;
+  }
+}

@@ -1,0 +1,27 @@
+<div>
+  <div *ngIf="categoryTitle">
+    <h4 class="news-title  under-line">
+      <a class="{{cssClass}}" [routerLink]="['/category', categoryId]">{{categoryTitle}}</a>
+    </h4>
+  </div>
+  <div *ngIf="loader">
+    <app-loader></app-loader>
+  </div>
+  <div *ngIf="newsList && newsList.length > 0 && !loader">
+    <article class="row mb-3" *ngFor="let nws of newsList">
+      <div class="col-lg-4 col-md-3 col-sm-3 col-4">
+        <a [routerLink]="['', nws.slug]" class="letest-news-img" [ngStyle]="{'background-image': 'url(' + nws.featuredImage.small +')'}"></a>
+      </div>
+      <div class="col-lg-8 col-md-9 col-sm-9 col-8">
+        <div class="letest-news-title">
+          <a class="letest-news-link" [routerLink]="['', nws.slug]">{{nws.title}}</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+<div class="row" *ngIf="errorMsg && !loader">
+  <div class="col-12 align-items-center col-12 flex justify-content-center error-msg-box">
+    {{errorMsg}}
+  </div>
+</div>

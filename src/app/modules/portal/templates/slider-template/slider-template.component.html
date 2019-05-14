@@ -1,0 +1,49 @@
+<!-- <div class="d-none-col-sm" *ngIf="newsList && newsList.length > 0">
+  <div class="breaking-news">breaking news</div>
+  <h5 class="breaking-news-title">
+    <a [routerLink]="['', newsList[num].slug]"> {{newsList[num].title}}</a>
+  </h5>
+</div> -->
+
+<div class="d-none-col-sm pb-3" *ngIf="newsList && newsList.length > 0">
+  <div class=" flex">
+    <div class="top-headlines">
+      Top Headlines
+    </div>
+    <div class="top-headlines-text">
+      <marquee behavior="" direction="" onmouseover="this.stop();" onmouseout="this.start();">
+        <div class="marqee">
+          <span class="mr-5" *ngFor="let nlist of newsList ">
+            {{nlist.title}}
+          </span>
+        </div>
+      </marquee>
+    </div>
+  </div>
+</div>
+
+<!-- Slider main container -->
+<div *ngIf="newsList && newsList.length > 0" class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide" *ngFor="let nws of newsList">
+      <img class="slider-image" src="{{nws.featuredImage.small ? nws.featuredImage.small : defaultImg}}" alt=""
+        srcset="">
+      <div class="carousel-caption ">
+        <h3 class="slider-title">
+          <a class="slider-link" [routerLink]="['', nws.slug]">{{nws.title}} </a>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>

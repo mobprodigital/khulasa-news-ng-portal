@@ -1,0 +1,19 @@
+.btn-language {
+  border: solid 1px #dc3545;
+  color: #fff;
+  background-color: #dc3545;
+  padding: 7px 21px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-container {
+  position: relative;
+}
+
+.btn-inner-container {
+  position: fixed;
+  right: 25px;
+  z-index: 2;
+}
