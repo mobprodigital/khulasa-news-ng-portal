@@ -21,7 +21,7 @@ export class HttpService {
   constructor(
     private http: HttpClient
   ) {
-    this.baseUrl = localStorage.getItem('lang') === 'hin' ? 'http://hindi.khulasa-news.com/wp-admin/admin-ajax.php' : 'http://khulasa-news.com/wp-admin/admin-ajax.php';
+    this.baseUrl = localStorage.getItem('lang') === 'hin' ? 'https://hindi.khulasa-news.com/wp-admin/admin-ajax.php' : 'https://khulasa-news.com/wp-admin/admin-ajax.php';
   }
 
   /**
